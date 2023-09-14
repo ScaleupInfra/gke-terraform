@@ -43,7 +43,8 @@ spec:
       image: "docker.io/hashicorp/terraform:light"
       command:
         - terraform
-        - plan
+        - apply
+        - "-auto-approve"
 
 ---
 apiVersion: tekton.dev/v1beta1
