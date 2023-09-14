@@ -25,7 +25,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: terraform-apply-destroy
+  name: terraform-apply
 spec:
   params:
     - name: ARGS
@@ -43,14 +43,7 @@ spec:
       image: "docker.io/hashicorp/terraform:light"
       command:
         - terraform
-        - apply
-        - "-auto-approve"
-    - name: terraform-destroy
-      image: "docker.io/hashicorp/terraform:light"
-      command:
-        - terraform
-        - destroy
-        - "-auto-approve"
+        - plan
 
 ---
 apiVersion: tekton.dev/v1beta1
@@ -63,9 +56,9 @@ spec:
       taskRef:
         name: terraform-plan
 
-    - name: terraform-apply-destroy
+    - name: terraform-apply
       taskRef:
-        name: terraform-apply-destroy
+        name: terraform-apply
 
 ---
 apiVersion: tekton.dev/v1beta1
