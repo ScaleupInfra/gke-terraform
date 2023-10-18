@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "gke-terraform"
+  description: "app to test backstage for existing repo"
+  annotations:
+    github.com/project-slug: ScaleupInfra/gke-terraform
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental
